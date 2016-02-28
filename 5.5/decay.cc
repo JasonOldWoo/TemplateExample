@@ -20,6 +20,12 @@ void ref(T const& x)
     std::cout << "x in ref(T const&): " << typeid(x).name() << std::endl;
 }
 
+template<typename T, int N, int M>
+T const* max4(T const (&a)[N], T const (&b)[M])
+{
+    return a < b ? b : a;
+}
+
 template<typename T>
 void nonref(T x)
 {
@@ -28,7 +34,7 @@ void nonref(T x)
 
 int main()
 {
-    std::string s;
+    std::string s = "orange";
 
     ::max("apple", "peach");    // OK
 #if 0
@@ -40,6 +46,8 @@ int main()
 #if 0
     ::max2("apple", s);         // Error
 #endif
+
+    ::max4("apple", "orange");
 
     ref("Hello");
     nonref("Hello");
