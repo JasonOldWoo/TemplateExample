@@ -51,7 +51,7 @@ T Stack<T, CONT>::top() const
     if (elems_.empty()) {
         throw std::out_of_range("Stack<>::top(): empty stack");
     }
-    elems_.back();          // return copy of the last element
+    return elems_.back();          // return copy of the last element
 }
 
 template<typename T,
